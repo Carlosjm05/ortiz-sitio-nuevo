@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Ortiz · departamento y municipio (/finca-raiz/…)
+   Valores copiados de los estilos inline de Departamento Tolima.dc.html y Municipio Melgar.dc.html.
+   ========================================================================== */
+
+/* ───────── Portada ───────── */
+.heroe-lugar{position:relative;min-height:min(86vh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--noche)}
+.heroe-lugar__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.heroe-lugar__velo{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,18,34,.78) 0%,rgba(6,18,34,.4) 50%,rgba(6,18,34,.05) 85%),linear-gradient(180deg,rgba(6,18,34,.55) 0%,rgba(6,18,34,0) 30%,rgba(6,18,34,0) 55%,rgba(6,18,34,.8) 100%)}
+.heroe-lugar__in{position:relative;width:100%;max-width:var(--carril);margin:0 auto;padding:130px 28px 32px;display:flex;flex-direction:column;gap:24px;color:#fff}
+.heroe-lugar :focus-visible{outline-color:#fff}
+.heroe-lugar__titulo{margin:0;font-family:var(--f-titulo);font-size:clamp(36px,4.47vw,71px);line-height:.98;letter-spacing:-.04em;max-width:15ch}
+.heroe-lugar__texto{margin:0;font-size:clamp(16px,1.12vw,16px);line-height:1.6;color:rgba(255,255,255,.9);max-width:60ch}
+.heroe-lugar__botones{display:flex;flex-wrap:wrap;gap:12px}
+.heroe-lugar__wa{display:inline-flex;align-items:center;gap:12px;min-height:58px;padding:0 24px 0 8px;border-radius:var(--r-pill);white-space:nowrap;background:var(--whatsapp);color:var(--whatsapp-tinta);text-decoration:none;font-family:var(--f-titulo);font-weight:800;font-size:16px}
+.heroe-lugar__wa:hover{background:var(--whatsapp-hover);color:var(--whatsapp-tinta)}
+.heroe-lugar__wa-ico{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:var(--r-pill);background:#fff}
+.heroe-lugar__wa-ico img{width:24px;height:24px;display:block}
+.heroe-lugar__cifras{margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px;padding:8px;border-radius:26px;background:#fff;color:var(--tinta);box-shadow:0 24px 60px rgba(8,22,40,.35)}
+.heroe-lugar__cifra{flex:1 1 150px;display:flex;flex-direction:column;gap:2px;padding:14px 20px;border-radius:var(--r-campo);background:var(--niebla);min-width:0}
+.heroe-lugar__cifra dt{font-size:13px;color:var(--gris)}
+.heroe-lugar__cifra dd{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:18px;letter-spacing:-.02em;overflow-wrap:anywhere}
+
+/* ───────── Contenedor y menú de secciones (departamento) ───────── */
+.ubic{max-width:var(--carril);margin:0 auto;padding:72px 20px 96px;display:flex;flex-direction:column;gap:41px}
+.ubic__texto{margin:0;font-size:16px;line-height:1.55;color:var(--gris);max-width:60ch}
+.ubic-secnav{position:sticky;top:78px;z-index:10;margin:-56px -20px 0;padding:10px 20px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--linea-3);display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.ubic-secnav::-webkit-scrollbar{display:none}
+.ubic-secnav a{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:var(--r-pill);background:var(--niebla);color:var(--tinta);font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap}
+.ubic-secnav a:hover{background:var(--azul);color:#fff}
+
+/* ───────── Elige tu municipio (departamento) ───────── */
+.ubic-muns{display:flex;flex-direction:column;gap:32px;scroll-margin-top:130px}
+.ubic-muns__cab{display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between}
+.ubic-muns__txt{display:flex;flex-direction:column;gap:12px}
+.ubic-muns__firma{margin:0;display:flex;flex-wrap:wrap;gap:6px 12px;font-size:14px;color:var(--gris)}
+.ubic-muns__firma strong{color:var(--tinta)}
+.ubic-muns__texto{margin:0;font-size:16px;line-height:1.6;color:var(--gris);max-width:46ch}
+.ubic-muns__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px;align-items:stretch}
+.ubic-muns__lista{display:flex;flex-direction:column;gap:8px}
+.ubic-mun{flex:1;display:flex;align-items:center;gap:18px;min-height:96px;padding:16px 16px 16px 24px;border:0;border-radius:26px;background:var(--niebla);color:var(--tinta);text-align:left;cursor:pointer;box-shadow:none;transform:none;transition:background .35s,color .35s,box-shadow .35s,transform .35s}
+.ubic-mun[aria-selected="true"]{background:var(--azul);color:#fff;box-shadow:0 14px 30px rgba(0,89,168,.28);transform:translateX(6px)}
+.ubic-mun__n{font-family:var(--f-titulo);font-weight:300;font-size:27px;line-height:1;opacity:.7}
+.ubic-mun__txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ubic-mun__nombre{font-family:var(--f-titulo);font-weight:800;font-size:clamp(20px,1.72vw,24px);letter-spacing:-.03em;line-height:1.05}
+.ubic-mun__meta{font-size:14px;color:var(--gris)}
+.ubic-mun[aria-selected="true"] .ubic-mun__meta{color:rgba(255,255,255,.88)}
+.ubic-mun__flecha{margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:var(--r-pill);background:#fff;color:var(--azul);font-size:17px;transition:all .35s}
+
+.ubic-panel{position:relative;min-height:560px;border-radius:32px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:var(--noche);box-shadow:0 2px 6px rgba(11,27,46,.08),0 24px 50px rgba(11,27,46,.18)}
+.ubic-panel :focus-visible{outline-color:#fff}
+.ubic-panel__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:object-position 1.2s var(--curva)}
+.ubic-panel__velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,34,.05) 0%,rgba(6,18,34,.55) 45%,rgba(6,18,34,.94) 100%)}
+.ubic-panel__in{position:relative;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:18px}
+.ubic-panel__cab{display:flex;flex-direction:column;gap:10px}
+.ubic-panel__nombre{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:clamp(34px,3.78vw,54px);letter-spacing:-.045em;line-height:.95}
+.ubic-panel__desc{margin:0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.92);max-width:52ch}
+.ubic-panel__datos{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px;padding:6px;border-radius:22px;background:#fff;color:var(--tinta)}
+.ubic-panel__datos div{display:flex;flex-direction:column;gap:2px;padding:12px 16px;border-radius:16px;background:var(--niebla);min-width:0}
+.ubic-panel__datos dt{font-size:12px;color:var(--gris)}
+.ubic-panel__datos dd{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:18px;letter-spacing:-.02em;overflow-wrap:anywhere}
+.ubic-panel__ideal{margin:0;font-size:15px;color:rgba(255,255,255,.92)}
+.ubic-panel__ideal strong{color:#fff}
+.ubic-panel__botones{display:flex;flex-wrap:wrap;gap:10px}
+.ubic-panel__ir{min-height:56px;padding:0 8px 0 24px}
+.ubic-panel__ir:hover{padding:0 4px 0 28px}
+.ubic-panel__ir .btn-flecha__ico{width:40px;height:40px;font-size:inherit}
+.ubic-panel__ver{display:inline-flex;align-items:center;min-height:56px;padding:0 22px;border-radius:var(--r-pill);border:1.5px solid rgba(255,255,255,.7);background:transparent;color:#fff;font-family:var(--f-titulo);font-weight:800;font-size:16px;cursor:pointer;white-space:nowrap;text-decoration:none}
+.ubic-panel__ver:hover{background:rgba(255,255,255,.14);color:#fff}
+
+/* ───────── Carruseles de proyectos y casas ───────── */
+.otros--lugar .otros__titulo{font-size:37px}
+.ubic-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-top:-4px}
+.ubic-chips::-webkit-scrollbar{display:none}
+.ubic-chip{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:var(--r-pill);border:1.5px solid var(--linea-2);background:#fff;color:var(--tinta);font-weight:700;font-size:14px;white-space:nowrap;cursor:pointer;transition:all .25s}
+.ubic-chip[aria-selected="true"]{border-color:var(--noche);background:var(--noche);color:#fff}
+.ubic-chip__n{font-size:12px;opacity:.75}
+.ubic-franja{margin:0 calc(50% - 50vw);padding:44px calc(50vw - 50%);background:var(--niebla)}
+
+/* ───────── ¿Por qué comprar en…? (municipio) ───────── */
+.razones{display:flex;flex-direction:column;gap:28px;scroll-margin-top:130px}
+.razones__cab{display:flex;flex-direction:column;gap:8px}
+.razones__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));grid-auto-flow:dense;gap:10px}
+.razon{border-radius:28px;background:var(--niebla);padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform .35s var(--curva),background .35s}
+.razon:hover{transform:translateY(-4px);background:#EDF3FA}
+.razon__ico{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--r-pill);background:var(--azul-suave);color:var(--azul)}
+.razon__titulo{font-family:var(--f-titulo);font-weight:800;font-size:18px;line-height:1.15}
+.razon__texto{font-size:15px;line-height:1.55;color:var(--gris)}
+.razon--azul{background:var(--azul);color:#fff;transition:none}
+.razon--azul:hover{transform:none;background:var(--azul)}
+.razon--azul .razon__cifra{font-family:var(--f-titulo);font-weight:800;font-size:clamp(27px,2.58vw,37px);overflow-wrap:anywhere;letter-spacing:-.04em;line-height:1}
+.razon--azul .razon__titulo{line-height:normal}
+.razon--azul .razon__texto{color:var(--sobre-noche-2)}
+.razon--foto{position:relative;min-height:320px;border-radius:30px;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:0;gap:0;background:var(--noche);transition:none}
+.razon--foto:hover{transform:none;background:var(--noche)}
+.razon--foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--curva)}
+.razon--foto:hover img{transform:scale(1.06)}
+.razon__velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,34,0) 30%,rgba(6,18,34,.85) 100%)}
+.razon__in{position:relative;padding:28px;display:flex;flex-direction:column;gap:6px}
+.razon--foto .razon__cifra{font-family:var(--f-titulo);font-weight:800;font-size:clamp(44px,4.64vw,68px);letter-spacing:-.05em;line-height:.9}
+.razon--foto .razon__titulo{font-size:20px;line-height:normal}
+.razon--foto .razon__texto{line-height:normal;color:rgba(255,255,255,.88)}
+@media (min-width:700px){.razon--foto{grid-column:span 2;grid-row:span 2}}
+
+/* ───────── Guía para comprar en… (municipio) ───────── */
+.guia-mun{display:flex;flex-direction:column;gap:32px;scroll-margin-top:130px}
+.guia-mun__cab{display:flex;flex-direction:column;gap:10px}
+.guia-mun__texto{margin:0;font-size:16px;line-height:1.6;color:var(--gris);max-width:64ch}
+.guia-mun__bloque{display:flex;flex-direction:column;gap:18px}
+.guia-mun__h3{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:22px;line-height:1.15;letter-spacing:-.02em}
+.guia-mun__tabla{overflow-x:auto;border-radius:26px;border:1px solid var(--linea-2)}
+.guia-mun__tabla table{width:100%;min-width:640px;border-collapse:collapse}
+.guia-mun__tabla thead tr{background:var(--noche);color:#fff}
+.guia-mun__tabla thead th{text-align:left;padding:16px 20px;font-size:14px;font-weight:600}
+.guia-mun__tabla tbody tr{background:#fff}
+.guia-mun__tabla tbody tr:nth-child(even){background:var(--niebla)}
+.guia-mun__tabla tbody th{text-align:left;padding:16px 20px;font-family:var(--f-titulo);font-weight:800;font-size:16px}
+.guia-mun__tabla td{padding:16px 20px;font-size:15px}
+.guia-mun__tabla .guia-mun__desde{font-family:var(--f-titulo);font-weight:800;font-size:16px;color:var(--azul);white-space:nowrap}
+.guia-mun__tabla .guia-mun__ideal{color:var(--gris-2)}
+.guia-mun__dos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px 48px}
+.guia-mun__col{display:flex;flex-direction:column;gap:16px}
+.guia-mun__p{margin:0;font-size:16px;line-height:1.65;color:var(--gris-2)}
+.guia-mun__docs{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.guia-mun__docs li{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-radius:22px;background:var(--niebla)}
+.guia-mun__n{flex-shrink:0;font-family:var(--f-titulo);font-weight:300;font-size:31px;line-height:1;color:var(--azul)}
+.guia-mun__doc{display:flex;flex-direction:column;gap:4px}
+.guia-mun__doc strong{font-family:var(--f-titulo);font-weight:800;font-size:17px}
+.guia-mun__doc span{font-size:15px;line-height:1.55;color:var(--gris)}
+
+/* ───────── Sigue buscando ───────── */
+.sigue{display:flex;flex-direction:column;gap:24px}
+.sigue__h3{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:18px}
+.sigue--depto .sigue__h3{margin-top:8px}
+.sigue-depto{position:relative;display:flex;align-items:center;gap:24px;min-height:200px;padding:32px;border-radius:32px;overflow:hidden;color:#fff;text-decoration:none;background:var(--noche)}
+.sigue-depto:hover{color:#fff}
+.sigue-depto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;transition:transform 1.4s var(--curva)}
+.sigue-depto:hover img{transform:scale(1.05)}
+.sigue-depto__txt{position:relative;display:flex;flex-direction:column;gap:8px}
+.sigue-depto__ante{font-size:15px;font-weight:600;color:rgba(255,255,255,.88)}
+.sigue-depto__titulo{font-family:var(--f-titulo);font-weight:800;font-size:clamp(25px,2.58vw,37px);letter-spacing:-.03em;line-height:1.05}
+.sigue-depto__texto{font-size:16px;color:var(--sobre-noche-2)}
+.sigue-depto__flecha{position:relative;margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:var(--r-pill);background:#fff;color:var(--azul);font-size:20px}
+.sigue__dos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px}
+.sigue__col{display:flex;flex-direction:column;gap:14px}
+.sigue__muns{display:flex;flex-wrap:wrap;gap:10px}
+.sigue-mun{display:flex;align-items:center;gap:12px;min-height:60px;padding:0 22px 0 8px;border-radius:var(--r-pill);background:var(--niebla);color:var(--tinta);text-decoration:none;white-space:nowrap;transition:background .2s,color .2s}
+.sigue-mun:hover{background:var(--azul);color:#fff}
+.sigue-mun img{width:44px;height:44px;border-radius:var(--r-pill);object-fit:cover;display:block}
+.sigue-mun__txt{display:flex;flex-direction:column;line-height:1.2}
+.sigue-mun__txt strong{font-size:16px}
+.sigue-mun__txt span{font-size:13px;opacity:.75}
+.sigue__deptos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
+.sigue-otro{position:relative;display:flex;align-items:center;gap:20px;min-height:180px;padding:28px;border-radius:30px;overflow:hidden;color:#fff;text-decoration:none;background:var(--noche)}
+.sigue-otro:hover{color:#fff}
+.sigue-otro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;transition:transform 1.4s}
+.sigue-otro:hover img{transform:scale(1.05)}
+.sigue-otro__txt{position:relative;display:flex;flex-direction:column;gap:6px}
+.sigue-otro__meta{font-size:14px;font-weight:600;color:rgba(255,255,255,.88)}
+.sigue-otro__nombre{font-family:var(--f-titulo);font-weight:800;font-size:31px;letter-spacing:-.03em;line-height:1}
+.sigue-otro__flecha{position:relative;margin-left:auto;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:var(--r-pill);background:#fff;color:var(--azul);font-size:18px}

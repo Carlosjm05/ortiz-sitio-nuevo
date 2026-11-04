@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Enlaces (/enlaces/) · Enlaces.dc.html — página del «link en la bio»
+   Columna de 480 px sobre la foto desenfocada, sin header ni footer del sitio.
+   ========================================================================== */
+
+.enlaces-body{background:var(--noche-2)}
+.enl-fondo{position:fixed;inset:0;overflow:hidden;background:var(--noche-2)}
+.enl-fondo img{width:100%;height:100%;object-fit:cover;filter:blur(40px);transform:scale(1.2);opacity:.4}
+.enl{position:relative;max-width:480px;margin:0 auto;min-height:100vh;background:var(--niebla);box-shadow:0 0 80px rgba(0,0,0,.45)}
+
+/* Portada */
+.enl-heroe{position:relative;min-height:470px;display:flex;flex-direction:column;justify-content:space-between;border-radius:0 0 40px 40px;overflow:hidden;color:#fff;background:var(--noche)}
+.enl-heroe__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.enl-heroe__velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,34,.6) 0%,rgba(6,18,34,0) 28%,rgba(6,18,34,.15) 50%,rgba(6,18,34,.9) 100%)}
+.enl-heroe__barra{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 18px 0}
+.enl-heroe__logo{display:block;height:42px;width:auto}
+.enl-compartir{display:flex;align-items:center;gap:8px;height:46px;padding:0 16px;border-radius:var(--r-pill);border:0;background:rgba(255,255,255,.18);color:#fff;font:600 14px var(--f-texto);cursor:pointer;transition:background .2s}
+.enl-compartir:hover{background:rgba(255,255,255,.3)}
+.enl-heroe :focus-visible{outline-color:#fff}
+.enl-heroe__txt{position:relative;display:flex;flex-direction:column;gap:12px;padding:0 22px 84px}
+.enl-heroe__titulo{margin:0;font-family:var(--f-titulo);font-size:clamp(40px,11vw,54px);line-height:.95;letter-spacing:-.045em}
+.enl-heroe__texto{margin:0;font-size:16px;line-height:1.5;color:#E3ECF6;max-width:34ch}
+
+/* Contenido */
+.enl-main{position:relative;margin-top:-66px;padding:0 14px 36px;display:flex;flex-direction:column;gap:12px}
+
+/* Canales */
+.enl-canales{display:flex;flex-direction:column;gap:8px}
+.enl-canal{display:flex;align-items:center;gap:14px;min-height:72px;padding:10px 18px 10px 10px;border-radius:var(--r-pill);background:#fff;color:var(--tinta);text-decoration:none;box-shadow:0 1px 3px rgba(11,27,46,.06),0 12px 28px rgba(6,18,34,.12);transition:transform .25s var(--curva)}
+.enl-canal:hover{transform:translateY(-2px);color:var(--tinta)}
+.enl-canal__ico{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--r-pill);background:var(--noche);color:#fff}
+.enl-canal__ico--whatsapp{background:var(--whatsapp)}
+.enl-canal__ico--whatsapp img{filter:brightness(0) invert(1)}
+.enl-canal__txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.enl-canal__txt strong{font-family:var(--f-titulo);font-weight:800;font-size:17px}
+.enl-canal__txt span{font-size:13px;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.enl-canal__flecha{margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:var(--r-pill);background:var(--niebla);color:var(--azul);font-size:16px}
+
+/* Últimas publicaciones de Instagram (solo si se cargan en Configuración → Redes) */
+.enl-insta{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.enl-insta__foto{display:block;aspect-ratio:1;border-radius:18px;overflow:hidden;background:var(--linea-3)}
+.enl-insta__foto img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Secciones */
+.enl-sec{display:flex;flex-direction:column;gap:12px;padding-top:18px}
+.enl-sec--casas{gap:10px}
+.enl-sec__cab{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 6px}
+.enl-sec__titulo{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:26px;letter-spacing:-.03em}
+.enl-sec__ver{flex-shrink:0;display:inline-flex;align-items:center;min-height:44px;font-weight:700;font-size:14px;color:var(--azul);text-decoration:none}
+
+/* Proyectos (carrusel) */
+.enl-proys{display:grid;grid-auto-flow:column;grid-auto-columns:76%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -14px;padding:0 14px 4px;scroll-padding:0 14px}
+.enl-proys::-webkit-scrollbar{display:none}
+.enl-proy{scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;border-radius:28px;overflow:hidden;color:#fff;text-decoration:none;background:var(--noche)}
+.enl-proy:hover{color:#fff}
+.enl-proy img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.enl-proy__velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,34,0) 40%,rgba(6,18,34,.9) 100%)}
+.enl-proy__txt{position:relative;display:flex;flex-direction:column;gap:6px;padding:18px}
+.enl-proy__meta{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.enl-proy__nombre{font-family:var(--f-titulo);font-weight:800;font-size:26px;line-height:1;letter-spacing:-.03em}
+.enl-proy__pie{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.22)}
+.enl-proy__precio{display:flex;flex-direction:column;line-height:1}
+.enl-proy__precio span:first-child{font-size:11px;color:rgba(255,255,255,.8);padding-bottom:3px}
+.enl-proy__precio span:last-child{font-family:var(--f-titulo);font-weight:800;font-size:24px}
+.enl-proy__flecha{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r-pill);background:#fff;color:var(--azul);font-size:18px}
+
+/* Casas */
+.enl-casas{display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:28px;background:#fff}
+.enl-casa{display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:center;gap:12px;padding:6px 14px 6px 6px;border-radius:22px;color:var(--tinta);text-decoration:none;transition:background .2s}
+.enl-casa:hover{background:var(--niebla);color:var(--tinta)}
+.enl-casa__foto{width:72px;height:72px;border-radius:18px;object-fit:cover}
+.enl-casa__txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.enl-casa__txt strong{font-family:var(--f-titulo);font-weight:800;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.enl-casa__txt span{font-size:13px;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.enl-casa__precio{font-family:var(--f-titulo);font-weight:800;font-size:18px;color:var(--azul);white-space:nowrap}
+
+/* Accesos: avance de obra y vender */
+.enl-accesos{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:18px}
+.enl-acceso{position:relative;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:3/4;padding:14px;border-radius:28px;overflow:hidden;color:#fff;text-decoration:none}
+.enl-acceso:hover{color:#fff}
+.enl-acceso--avance{background:var(--noche)}
+.enl-acceso--vende{background:var(--azul)}
+.enl-acceso__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.enl-acceso__velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,34,.2) 0%,rgba(6,18,34,.85) 100%)}
+.enl-acceso__etq{position:relative;align-self:flex-start;display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:var(--r-pill);background:var(--whatsapp);color:var(--whatsapp-tinta);font-size:12px;font-weight:800}
+.enl-acceso__txt{position:relative;display:flex;flex-direction:column;gap:4px}
+.enl-acceso__txt strong{font-family:var(--f-titulo);font-weight:800;font-size:19px;line-height:1.1}
+.enl-acceso__txt>span:last-child{font-size:13px;color:rgba(255,255,255,.88)}
+.enl-acceso--vende .enl-acceso__txt>span:last-child{color:var(--sobre-noche-2)}
+.enl-acceso__play{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r-pill);background:#fff;color:var(--azul)}
+.enl-acceso--avance .enl-acceso__txt strong{padding-top:6px}
+.enl-acceso__casa{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:var(--r-pill);background:rgba(255,255,255,.16)}
+.enl-accesos :focus-visible{outline-offset:3px}
+
+/* Oficina */
+.enl-ofi{display:flex;flex-direction:column;gap:10px;padding:16px;margin-top:18px;border-radius:28px;background:#fff}
+.enl-ofi__cab{display:flex;align-items:center;gap:12px}
+.enl-ofi__ico{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:var(--r-pill);background:var(--azul-suave);color:var(--azul)}
+.enl-ofi__txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.enl-ofi__txt h2{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:18px}
+.enl-ofi__txt span{font-size:14px;color:var(--gris)}
+.enl-ofi__horario{font-size:14px;line-height:1.5;color:var(--gris-2)}
+.enl-ofi__btns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.enl-ofi__llegar,.enl-ofi__guardar{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:var(--r-pill);font-family:var(--f-titulo);font-weight:800;font-size:14px;text-decoration:none}
+.enl-ofi__llegar{background:var(--azul);color:#fff}
+.enl-ofi__llegar:hover{background:var(--noche);color:#fff}
+.enl-ofi__guardar{border:1.5px solid var(--azul);color:var(--azul)}
+.enl-ofi__guardar:hover{background:var(--azul);color:#fff}
+
+/* Pie */
+.enl-pie{display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:18px;text-align:center;font-size:13px;color:var(--gris)}
+.enl-pie a{color:var(--tinta);font-weight:700;text-decoration:none}
+
+@media (prefers-reduced-motion:reduce){.enl-canal{transition:none}.enl-canal:hover{transform:none}}

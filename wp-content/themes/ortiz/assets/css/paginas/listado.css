@@ -1,0 +1,219 @@
+/* ==========================================================================
+   Ortiz · listados: Proyectos, Propiedades (Casas), Buscador y colecciones
+   Valores copiados de los estilos inline de Proyectos.dc.html, Propiedades.dc.html y Buscador.dc.html.
+   Con JS (html.js) el asistente va paso a paso y los filtros se pliegan en celular; sin JS todo queda visible.
+   ========================================================================== */
+
+/* ───────── Portada ───────── */
+.heroe-lista{position:relative;min-height:min(58vh,540px);display:flex;align-items:flex-end;overflow:hidden;background:var(--noche)}
+.heroe-lista__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.heroe-lista__velo{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,18,34,.8) 0%,rgba(6,18,34,.45) 55%,rgba(6,18,34,.1) 100%),linear-gradient(180deg,rgba(6,18,34,.55) 0%,rgba(6,18,34,0) 35%)}
+.heroe-lista__in{position:relative;width:100%;max-width:var(--carril);margin:0 auto;padding:118px 28px 40px;display:flex;flex-direction:column;gap:18px;color:#fff}
+.heroe-lista__titulo{margin:0;font-family:var(--f-titulo);font-size:clamp(34px,4.13vw,65px);line-height:.98;letter-spacing:-.04em;max-width:16ch}
+.heroe-lista__texto{margin:0;font-size:clamp(16px,1.12vw,16px);line-height:1.6;color:rgba(255,255,255,.92);max-width:56ch}
+.heroe-lista :focus-visible{outline-color:#fff}
+
+/* ───────── Contenedor ───────── */
+.listado{max-width:var(--carril);margin:0 auto;padding:0 20px 44px;display:flex;flex-direction:column;gap:38px}
+
+/* ───────── Resultados: barra fija con pestañas y filtros ───────── */
+.resultados{display:flex;flex-direction:column;gap:24px}
+.filtros{position:sticky;top:72px;z-index:10;margin:0 -20px;padding:14px 20px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--linea-3)}
+.filtros__form{display:flex;flex-direction:column;gap:12px}
+.filtros__tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.filtros__tabs::-webkit-scrollbar{display:none}
+.filtros__tab{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:var(--r-pill);border:1.5px solid var(--linea-2);background:#fff;color:var(--tinta);font-weight:700;font-size:15px;white-space:nowrap;cursor:pointer;transition:all .25s}
+.filtros__tab[aria-selected="true"]{border-color:var(--noche);background:var(--noche);color:#fff}
+.filtros__tab-n{font-size:12px;opacity:.75}
+.filtros__abrir{display:none;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:0 18px;border-radius:var(--r-pill);border:1.5px solid var(--linea-2);background:#fff;color:var(--tinta);font:700 15px var(--f-texto);cursor:pointer}
+.filtros__abrir-txt{display:flex;align-items:center;gap:10px}
+.filtros__abrir-res{font-size:13px;color:var(--gris)}
+.filtros__campos{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.filtros__campo{display:flex;flex-direction:column;gap:2px;min-height:56px;justify-content:center;padding:6px 18px;border-radius:var(--r-campo);background:var(--niebla);min-width:0;flex:1 1 170px}
+.filtros__campo>span{font-size:12px;color:var(--gris)}
+.filtros__campo select{width:100%;min-width:0;border:0;outline:0;background:transparent;font:600 15px var(--f-texto);color:var(--tinta);cursor:pointer;padding:0}
+.filtros__campo:focus-within{outline:3px solid var(--azul);outline-offset:2px}
+.filtros__res{display:flex;align-items:center;gap:10px;padding:0 6px;margin-left:auto}
+.filtros__res strong{font-family:var(--f-titulo);font-weight:800;font-size:16px;white-space:nowrap}
+.filtros__limpiar{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:var(--r-pill);border:0;background:var(--azul-suave);color:var(--azul);font:700 14px var(--f-texto);cursor:pointer;white-space:nowrap;text-decoration:none}
+.filtros__limpiar:hover{color:var(--azul)}
+/* En celular (como fBtnOn / fShow del diseño): botón «Filtros» que despliega los campos */
+@media (max-width:759.98px){
+  .js .filtros__abrir{display:flex}
+  .js .filtros__campos:not(.is-abierto){display:none}
+}
+
+/* Filtros rápidos (Casas) */
+.rapidos{display:flex;flex-wrap:wrap;gap:8px}
+.rapido{position:relative;display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 8px 0 16px;border-radius:var(--r-pill);border:1.5px solid #D5DCE5;background:#fff;color:var(--tinta);font:700 15px var(--f-texto);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.rapido:hover{border-color:var(--azul)}
+.rapido input,.atipo input,.achip input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.rapido__marca{font-size:14px}
+.rapido__marca::before{content:'+'}
+.rapido__n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;border-radius:var(--r-pill);background:var(--azul-suave);font-size:13px}
+.rapido:has(input:checked){background:var(--noche);color:#fff;border-color:var(--noche)}
+.rapido:has(input:checked):hover{border-color:var(--azul)}
+.rapido:has(input:checked) .rapido__marca::before{content:'✓'}
+.rapido:has(input:checked) .rapido__n{background:rgba(255,255,255,.18)}
+.rapido:has(input:focus-visible){outline:3px solid var(--azul);outline-offset:3px}
+
+/* Tarjetas */
+.resultados__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:24px}
+
+/* Sin resultados */
+.sin-res{display:flex;flex-direction:column;align-items:center;gap:14px;padding:56px 24px;border-radius:32px;background:var(--niebla);text-align:center}
+.sin-res strong{font-family:var(--f-titulo);font-weight:800;font-size:23px}
+.sin-res span{font-size:16px;color:var(--gris)}
+.sin-res__btn{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:var(--r-pill);border:0;background:var(--azul);color:#fff;font-family:var(--f-titulo);font-weight:800;font-size:16px;cursor:pointer;text-decoration:none}
+.sin-res__btn:hover{background:var(--azul-hover);color:#fff}
+
+/* ───────── «Cuéntanos qué buscas» (asistente por pasos) ───────── */
+.asistente{scroll-margin-top:120px;border-radius:32px;background:var(--azul);color:#fff;padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;gap:28px}
+.asistente :focus-visible{outline-color:#fff}
+.asistente__cab{display:flex;flex-wrap:wrap;gap:12px 48px;align-items:flex-end;justify-content:space-between}
+.asistente__cab-txt{display:flex;flex-direction:column;gap:10px;min-width:0}
+.asistente__titulo{margin:0;font-family:var(--f-titulo);font-weight:800;font-size:clamp(25px,2.92vw,37px);line-height:1.02;letter-spacing:-.035em}
+.asistente__texto{margin:0;font-size:16px;line-height:1.55;color:var(--sobre-noche-2);max-width:52ch}
+.asistente__form{display:flex;flex-direction:column;gap:16px}
+
+/* Barra de pasos */
+.asistente__pasos{margin:0 0 4px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.asistente__nav{display:flex;flex-direction:column;gap:8px;min-width:0}
+.asistente__barra{height:6px;border-radius:var(--r-pill);background:rgba(255,255,255,.22);transition:background .3s}
+.asistente__ir{display:flex;align-items:center;gap:8px;padding:0;border:0;background:transparent;color:#C9DDF2;font:700 13px var(--f-texto);cursor:pointer;text-align:left;min-width:0}
+.asistente__punto{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--r-pill);background:rgba(255,255,255,.18);color:#fff;font-size:12px}
+.asistente__nav-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.asistente__nav.is-actual .asistente__barra,.asistente__nav.is-hecho .asistente__barra{background:#fff}
+.asistente__nav.is-actual .asistente__ir,.asistente__nav.is-hecho .asistente__ir{color:#fff}
+.asistente__nav.is-actual .asistente__punto{background:#fff;color:var(--azul)}
+.asistente__nav.is-hecho .asistente__punto{background:var(--whatsapp);color:var(--whatsapp-tinta);font-size:0}
+.asistente__nav.is-hecho .asistente__punto::before{content:'✓';font-size:12px}
+@media (max-width:1099.98px){.asistente__nav:not(.is-actual) .asistente__nav-label{display:none}}
+
+.asistente__cab-paso{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.asistente__cab-paso strong{font-family:var(--f-titulo);font-weight:800;font-size:18px;letter-spacing:-.02em}
+.asistente__cab-paso span{font-size:14px;color:var(--sobre-noche-2)}
+
+/* Pasos (sin JS: todos visibles, cada uno con su título) */
+.asistente__cuerpo{display:flex;flex-direction:column;gap:28px}
+.asistente__paso{margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:14px;min-width:0}
+.asistente__legend{padding:0;margin:0 0 14px;font-family:var(--f-titulo);font-weight:800;font-size:18px;letter-spacing:-.02em}
+.asistente__grid{display:grid;gap:8px}
+.asistente__grid--220{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.asistente__grid--200{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.asistente__grid--190{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+.asistente__tipo--campo{display:flex;min-width:0}
+.asistente__tipo--campo .asistente__campo{flex:1}
+.asistente__amen{display:flex;flex-direction:column;gap:14px}
+.asistente__campo{display:flex;flex-direction:column;gap:4px;padding:10px 18px;border-radius:var(--r-campo);background:#fff;min-width:0}
+.asistente__campo:focus-within{outline:3px solid #fff;outline-offset:3px}
+.asistente__k{font-size:12px;color:var(--gris)}
+.asistente__req{color:#D92D20}
+.asistente__input{width:100%;min-width:0;border:0;outline:0;background:transparent;font:600 16px var(--f-texto);color:var(--tinta);padding:0}
+select.asistente__input{cursor:pointer}
+.asistente__nota{resize:vertical;font-weight:500;line-height:1.5}
+
+/* Tipo: tarjetas con marca */
+.atipo{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:84px;padding:14px 18px;border-radius:20px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:#fff;text-align:left;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.atipo:hover{border-color:#fff}
+.atipo__cab{display:flex;align-items:center;gap:8px;width:100%;font-family:var(--f-titulo);font-weight:800;font-size:16px;letter-spacing:-.01em}
+.atipo__marca{margin-left:auto;display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:var(--r-pill);border:1.5px solid rgba(255,255,255,.6);background:transparent;color:#fff;font-size:12px}
+.atipo__desc{font-size:13px;line-height:1.4;color:var(--sobre-noche-2)}
+.atipo:has(input:checked){background:#fff;color:var(--azul);border-color:#fff}
+.atipo:has(input:checked) .atipo__marca{background:var(--azul);border-color:var(--azul)}
+.atipo:has(input:checked) .atipo__marca::before{content:'✓'}
+.atipo:has(input:checked) .atipo__desc{color:var(--gris)}
+.atipo:has(input:focus-visible){outline:3px solid #fff;outline-offset:3px}
+
+/* Chips de municipios y amenidades */
+.achips{display:flex;flex-wrap:wrap;gap:8px}
+.achip{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--r-pill);border:1.5px solid rgba(255,255,255,.45);background:transparent;color:#fff;font:700 14px var(--f-texto);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.achip__marca::before{content:'+'}
+.achip:has(input:checked){background:#fff;color:var(--azul);border-color:#fff}
+.achip:has(input:checked) .achip__marca::before{content:'✓'}
+.achip:has(input:focus-visible){outline:3px solid #fff;outline-offset:3px}
+.asistente__amen-grupo{display:flex;flex-direction:column;gap:8px}
+.asistente__amen-titulo{font-size:14px;font-weight:700;color:#C9DDF2}
+
+/* Acciones */
+.asistente__acciones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.asistente__aviso,.asistente__error{font-size:15px;font-weight:700;color:#FFE08A}
+.asistente__aviso:empty{display:none}
+.asistente__error{margin:0}
+.asistente__atras,.asistente__siguiente,.asistente__enviar{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 24px;border-radius:var(--r-pill);font-family:var(--f-titulo);font-weight:800;font-size:16px;cursor:pointer}
+.asistente__atras{border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff}
+.asistente__atras:hover{border-color:#fff}
+.asistente__siguiente{margin-left:auto;padding:0 8px 0 26px;border:0;background:#fff;color:var(--azul);gap:14px}
+.asistente__siguiente:hover{background:var(--azul-suave)}
+.asistente__siguiente-ico{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--r-pill);background:var(--azul);color:#fff}
+.asistente__enviar{margin-left:auto;padding:0 26px 0 8px;border:0;background:var(--whatsapp);color:var(--whatsapp-tinta);gap:12px}
+.asistente__enviar:hover{background:var(--whatsapp-hover)}
+.asistente__enviar:disabled{opacity:.7;cursor:progress}
+.asistente__enviar-ico{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:var(--r-pill);background:#fff}
+.asistente__enviar-ico img{width:24px;height:24px;display:block}
+
+/* Con JS: un paso a la vez y solo las preguntas del tipo elegido */
+html:not(.js) .asistente__pasos,html:not(.js) .asistente__cab-paso,html:not(.js) .asistente__siguiente{display:none}
+.js .asistente__legend{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.js .asistente__cuerpo{gap:0}
+.js .asistente__paso:not(.is-activo){display:none}
+.js .asistente__tipo:not(.is-tipo){display:none}
+.js .asistente__form:not(.is-ultimo) .asistente__enviar{display:none}
+.js .asistente__form.is-ultimo .asistente__siguiente{display:none}
+
+/* Listo */
+.asistente__listo{display:flex;flex-direction:column;gap:14px;padding:clamp(20px,3vw,32px);border-radius:26px;background:#fff;color:var(--tinta)}
+.asistente__listo :focus-visible{outline-color:var(--azul)}
+.asistente__listo-titulo{font-family:var(--f-titulo);font-weight:800;font-size:22px}
+.asistente__resumen{font-size:16px;line-height:1.55;color:var(--gris-2);white-space:pre-line}
+.asistente__listo-botones{display:flex;flex-wrap:wrap;gap:10px}
+.asistente__listo-wa{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 20px;border-radius:var(--r-pill);background:var(--whatsapp);color:var(--whatsapp-tinta);font-family:var(--f-titulo);font-weight:800;font-size:15px;text-decoration:none}
+.asistente__listo-wa:hover{background:var(--whatsapp-hover);color:var(--whatsapp-tinta)}
+.asistente__editar{min-height:50px;padding:0 20px;border-radius:var(--r-pill);border:1.5px solid var(--azul);background:#fff;color:var(--azul);font:700 14px var(--f-texto);cursor:pointer}
+
+/* ───────── Precios de lotes por municipio ───────── */
+.precios-mun{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 56px;align-items:start}
+.precios-mun__lado{display:flex;flex-direction:column;gap:14px;position:sticky;top:180px}
+.precios-mun__texto{margin:0;font-size:16px;line-height:1.6;color:var(--gris);max-width:44ch}
+.precios-mun__mapa{position:relative;height:260px;margin-top:6px;border-radius:24px;overflow:hidden;background:var(--niebla)}
+.precios-mun__mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.precios-mun__chip{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;min-height:32px;padding:0 14px;border-radius:var(--r-pill);background:var(--noche);color:#fff;font-size:13px;font-weight:800;white-space:nowrap;pointer-events:none}
+.precios-mun__lista{display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:28px;background:var(--niebla)}
+.precio-mun{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) auto auto;align-items:center;gap:16px;min-height:74px;padding:10px 10px 10px 24px;border:0;border-radius:22px;background:#fff;color:var(--tinta);text-align:left;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.precio-mun:hover{transform:translateX(6px);box-shadow:0 10px 24px rgba(11,27,46,.1)}
+.precio-mun__lugar{display:flex;flex-direction:column;min-width:0}
+.precio-mun__lugar strong{font-family:var(--f-titulo);font-weight:800;font-size:18px}
+.precio-mun__lugar span{font-size:13px;color:var(--gris)}
+.precio-mun__n{font-size:15px;color:var(--gris)}
+.precio-mun__desde{font-family:var(--f-titulo);font-weight:800;font-size:20px;color:var(--azul);white-space:nowrap}
+.precio-mun__flecha{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:var(--r-pill);background:var(--azul-suave);color:var(--azul)}
+
+/* ───────── Pasos («Cómo comprar tu lote» en azul noche; «Qué revisamos» en gris) ───────── */
+.pasos{display:flex;flex-direction:column;gap:28px}
+.pasos--oscuro{background:var(--noche);color:#fff;border-radius:36px;padding:clamp(32px,5vw,64px);gap:32px}
+.pasos__cab{display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between}
+.pasos__titulo{max-width:18ch}
+.pasos--oscuro .pasos__titulo{max-width:16ch}
+.pasos__texto{margin:0;font-size:16px;line-height:1.6;color:var(--gris);max-width:44ch}
+.pasos--oscuro .pasos__texto{color:var(--sobre-noche)}
+.pasos__lista{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.paso{background:var(--niebla);border-radius:26px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:background .3s,transform .3s}
+.paso:hover{transform:translateY(-4px)}
+.pasos--oscuro .paso{background:#10305A}
+.paso__n{font-family:var(--f-titulo);font-weight:300;font-size:37px;line-height:1;color:var(--azul)}
+.pasos--oscuro .paso__n{color:#9CC6F0}
+.paso__titulo{font-family:var(--f-titulo);font-weight:800;font-size:19px}
+.paso__texto{font-size:15px;line-height:1.55;color:var(--gris)}
+.pasos--oscuro .paso__texto{color:var(--sobre-noche-2)}
+
+
+/* ───────── ¿No encuentras lo que buscas? ───────── */
+.busca-cta{position:relative;border-radius:36px;overflow:hidden;background:var(--noche);color:#fff;padding:clamp(28px,4.5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;align-items:center}
+.busca-cta__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3}
+.busca-cta__txt{position:relative;display:flex;flex-direction:column;gap:12px}
+.busca-cta__texto{margin:0;font-size:16px;line-height:1.6;color:var(--sobre-noche-2);max-width:48ch}
+.busca-cta__btns{position:relative;display:flex;flex-wrap:wrap;gap:10px}
+.busca-cta__wa{display:inline-flex;align-items:center;gap:12px;min-height:60px;padding:0 26px 0 8px;border-radius:var(--r-pill);white-space:nowrap;background:var(--whatsapp);color:var(--whatsapp-tinta);text-decoration:none;font-family:var(--f-titulo);font-weight:800;font-size:16px}
+.busca-cta__wa:hover{background:var(--whatsapp-hover);color:var(--whatsapp-tinta)}
+.busca-cta__wa-ico{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r-pill);background:#fff}
+.busca-cta__wa-ico img{width:26px;height:26px;display:block}

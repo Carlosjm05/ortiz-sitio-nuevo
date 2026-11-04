@@ -1,0 +1,192 @@
+/* Vende tu propiedad (page-vende-tu-propiedad.php). Diseño: Vende tu Propiedad.dc.html
+   (valores de los estilos en línea del diseño). Las preguntas frecuentes vienen de componentes.css. */
+
+
+/* ───────── Portada ───────── */
+.heroe-vende{position:relative;background:var(--noche);color:#fff;overflow:hidden}
+.heroe-vende__in{max-width:var(--carril);margin:0 auto;padding:130px var(--margen) 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:40px 56px;align-items:center}
+.heroe-vende__txt{display:flex;flex-direction:column;gap:22px}
+.heroe-vende__ante{align-self:flex-start;white-space:nowrap;display:inline-flex;align-items:center;min-height:36px;padding:0 16px;border-radius:var(--r-pill);background:var(--azul);font-size:14px;font-weight:700}
+.heroe-vende__titulo{margin:0;font-family:var(--f-titulo);font-size:clamp(36px,4.3vw,68px);line-height:.98;letter-spacing:-.04em;max-width:13ch}
+.heroe-vende__texto{margin:0;font-size:16px;line-height:1.6;color:var(--sobre-noche);max-width:50ch}
+.heroe-vende__nota{margin:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--sobre-noche)}
+
+.mosaico-vende{display:grid;grid-template-columns:1.15fr 1fr;grid-auto-rows:minmax(170px,auto);gap:10px}
+.mosaico-vende__tour{grid-row:span 2;position:relative;min-height:360px;border-radius:var(--r-tarjeta);overflow:hidden;background:#10305A}
+.mosaico-vende__tour img,.mosaico-vende__video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mosaico-vende__velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,34,.1) 40%,rgba(6,18,34,.85) 100%)}
+.mosaico-vende__360{position:absolute;top:18px;left:18px;display:flex;align-items:center;justify-content:center;width:84px;height:84px}
+.mosaico-vende__anillo{position:absolute;inset:0;border-radius:var(--r-pill);border:2px dashed rgba(255,255,255,.8)}
+.mosaico-vende__360-txt{display:flex;align-items:center;justify-content:center;width:62px;height:62px;border-radius:var(--r-pill);background:#fff;color:var(--azul);font-family:var(--f-titulo);font-weight:800;font-size:17px}
+.mosaico-vende__pie{position:absolute;left:22px;right:22px;bottom:20px;display:flex;flex-direction:column;gap:4px}
+.mosaico-vende__pie strong{font-family:var(--f-titulo);font-weight:800;font-size:23px;letter-spacing:-.02em}
+.mosaico-vende__pie span{font-size:14px;color:rgba(255,255,255,.9)}
+.mosaico-vende__video{position:relative;border-radius:26px;overflow:hidden;background:#10305A}
+.mosaico-vende__video img{transition:transform 1.2s}
+.mosaico-vende__video:hover img{transform:scale(1.08)}
+.mosaico-vende__oscuro{position:absolute;inset:0;background:rgba(6,18,34,.45)}
+.mosaico-vende__video-in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:18px}
+.mosaico-vende__play{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:var(--r-pill);background:#fff;color:var(--azul)}
+.mosaico-vende__video-txt{display:flex;flex-direction:column;gap:2px}
+.mosaico-vende__video-txt strong{font-family:var(--f-titulo);font-weight:800;font-size:18px}
+.mosaico-vende__video-txt span{font-size:13px;color:rgba(255,255,255,.9)}
+.mosaico-vende__canales{border-radius:26px;background:var(--azul);padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.mosaico-vende__canales strong{font-family:var(--f-titulo);font-weight:800;font-size:18px;line-height:1.1}
+.mosaico-vende__chips{display:flex;flex-wrap:wrap;gap:6px}
+.mosaico-vende__chips span{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.16);font-size:13px;font-weight:700;white-space:nowrap}
+.mosaico-vende__acomp{grid-column:1/-1;border-radius:26px;background:#fff;color:var(--tinta);padding:18px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.mosaico-vende__acomp strong{font-family:var(--f-titulo);font-weight:800;font-size:18px;white-space:nowrap}
+.mosaico-vende__checks{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.mosaico-vende__checks span{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:var(--r-pill);background:var(--azul-suave);color:var(--azul);font-size:13px;font-weight:700;white-space:nowrap}
+
+/* ───────── Cuerpo ───────── */
+.vende__cuerpo{max-width:var(--carril);margin:0 auto;padding:40px 20px 44px;display:flex;flex-direction:column;gap:41px}
+
+/* Así se verá tu propiedad */
+.vsvc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px 56px;align-items:center}
+.vsvc--sin-ventana{grid-template-columns:1fr}
+.vsvc__txt{display:flex;flex-direction:column;gap:20px}
+.vsvc__texto{margin:0;font-size:16px;line-height:1.6;color:var(--gris);max-width:48ch}
+.vsvc__lista{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px}
+.vcheck{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:22px;background:var(--niebla)}
+.vcheck__ico{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:var(--r-pill);background:var(--azul);color:#fff;font-size:14px;font-weight:800}
+.vcheck__txt{display:flex;flex-direction:column;gap:2px}
+.vcheck__txt strong{font-family:var(--f-titulo);font-weight:800;font-size:16px}
+.vcheck__txt span{font-size:14px;line-height:1.5;color:var(--gris)}
+.navegador{border-radius:28px;background:var(--noche);padding:10px;box-shadow:0 24px 60px rgba(11,27,46,.25)}
+.navegador__barra{display:flex;align-items:center;gap:6px;padding:6px 10px 12px}
+.navegador__punto{width:10px;height:10px;border-radius:var(--r-pill);background:#EE6A5F}
+.navegador__punto--2{background:#F5BE4F}
+.navegador__punto--3{background:#62C554}
+.navegador__url{margin-left:12px;flex:1;min-width:0;min-height:28px;display:flex;align-items:center;padding:0 14px;border-radius:var(--r-pill);background:#10305A;color:var(--sobre-noche-3);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.navegador__pantalla{position:relative;height:clamp(380px,40vw,560px);border-radius:20px;overflow:hidden;background:#fff}
+.navegador__pantalla iframe{position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(.4);transform-origin:0 0;pointer-events:none}
+.navegador__ver{position:absolute;inset:0;border-radius:20px}
+.navegador__ver:focus-visible{outline-offset:-4px}
+
+/* Así funciona (bloque azul noche) */
+.vpasos{background:var(--noche);color:#fff;border-radius:36px;padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;gap:32px}
+.vpasos__cab{display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between}
+.vpasos__titulo{max-width:14ch}
+.vpasos__texto{margin:0;font-size:16px;line-height:1.6;color:var(--sobre-noche);max-width:44ch}
+.vpasos__lista{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px}
+.vpaso{background:#10305A;border-radius:26px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .3s}
+.vpaso:hover{transform:translateY(-4px)}
+.vpaso__n{font-family:var(--f-titulo);font-weight:300;font-size:37px;line-height:1;color:#9CC6F0}
+.vpaso__titulo{font-family:var(--f-titulo);font-weight:800;font-size:19px}
+.vpaso__texto{font-size:15px;line-height:1.55;color:var(--sobre-noche-2)}
+
+/* Antes de empezar, ten a mano */
+.vdocs{display:flex;flex-direction:column;gap:24px}
+.vdocs__cab{display:flex;flex-direction:column;gap:8px}
+.vdocs__texto{margin:0;font-size:16px;line-height:1.6;color:var(--gris);max-width:56ch}
+.vdocs__lista{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px}
+.vdoc{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-radius:24px;background:var(--niebla)}
+.vdoc__n{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--r-pill);background:var(--azul);color:#fff;font-weight:800;font-size:15px}
+.vdoc__txt{display:flex;flex-direction:column;gap:4px}
+.vdoc__txt strong{font-family:var(--f-titulo);font-weight:800;font-size:17px}
+.vdoc__txt span{font-size:15px;line-height:1.55;color:var(--gris)}
+
+/* ───────── Formulario «Cuéntanos de tu propiedad» ───────── */
+.vform-sec{scroll-margin-top:90px;display:flex;flex-direction:column;gap:28px}
+.vform-sec__cab{display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between}
+.vform-sec__texto{margin:0;font-size:16px;line-height:1.6;color:var(--gris);max-width:44ch}
+.vform-sec__fila{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.vform{flex:1 1 560px;min-width:0;border-radius:32px;background:var(--niebla);padding:clamp(16px,2vw,24px);display:flex;flex-direction:column;gap:16px}
+.vform fieldset{margin:0;padding:0;border:0;min-width:0}
+
+.vform__cab{display:flex;flex-direction:column;gap:12px}
+html:not(.js) .vform__cab{display:none}
+.vform__pasos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.vform__paso-btn{display:flex;align-items:center;gap:10px;min-height:56px;padding:6px 14px 6px 6px;border:0;border-radius:var(--r-pill);background:#fff;color:var(--tinta);cursor:pointer;text-align:left;min-width:0;transition:all .25s}
+.vform__paso-btn[aria-selected="true"]{background:var(--noche);color:#fff}
+.vform__marca{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:var(--r-pill);background:var(--niebla);color:var(--gris);font-family:var(--f-titulo);font-weight:800;font-size:16px}
+.vform__paso-btn[aria-selected="true"] .vform__marca,.vform__paso-btn.is-hecho .vform__marca{background:var(--azul);color:#fff}
+.vform__etq{font-weight:700;font-size:14px;line-height:1.15;overflow:hidden;text-overflow:ellipsis}
+/* En celular no cabe el nombre del paso (en el diseño queda una rayita): solo el número, centrado. */
+@media (max-width:640px){
+  .vform__paso-btn{justify-content:center;padding:6px}
+  .vform__etq{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+}
+.vform__barra{height:6px;border-radius:var(--r-pill);background:var(--linea-2);overflow:hidden}
+.vform__barra span{display:block;width:25%;height:100%;background:var(--azul);border-radius:var(--r-pill);transition:width .5s var(--curva)}
+.vform__legend{padding:0;margin:0 0 10px;font-family:var(--f-titulo);font-weight:800;font-size:18px}
+.vform.is-pasos .vform__legend{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+
+
+.vcontador{padding:10px 12px 10px 16px}
+.vcontador__fila{display:flex;align-items:center;gap:10px}
+.vcontador__btn{flex-shrink:0;width:44px;height:44px;border-radius:var(--r-pill);border:0;background:var(--niebla);color:var(--azul);font:800 20px var(--f-texto);cursor:pointer}
+.vcontador__btn--mas{background:var(--azul);color:#fff}
+
+.vgps{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 12px 12px 16px;border-radius:var(--r-campo);background:#fff}
+.vgps__txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.vgps__txt strong{font-size:15px}
+.vgps__txt strong span{font-weight:500;color:var(--gris)}
+.vgps__txt>span{font-size:13px;color:var(--gris)}
+.vgps__btn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--r-pill);border:1.5px solid var(--azul);background:#fff;color:var(--azul);font:700 14px var(--f-texto);cursor:pointer;white-space:nowrap}
+.vgps__btn:hover{background:var(--azul-suave)}
+
+.vcarga{position:relative;display:flex;align-items:center;gap:14px;min-height:72px;padding:12px 14px 12px 16px;border-radius:var(--r-campo);background:#fff;border:1.5px dashed #D5DCE5;cursor:pointer;min-width:0;transition:border-color .2s}
+.vcarga:hover{border-color:var(--azul)}
+.vcarga:focus-within{outline:3px solid var(--azul);outline-offset:2px}
+.vcarga input{position:absolute;width:1px;height:1px;opacity:0}
+.vcarga__ico{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r-pill);background:var(--azul-suave);color:var(--azul);font-weight:800}
+.vcarga__txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.vcarga__txt strong{font-size:15px;color:var(--tinta)}
+.vcarga__txt>span{font-size:13px;color:var(--gris);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vcarga.is-ok{border-color:var(--azul)}
+.vcarga.is-ok .vcarga__ico{background:var(--azul);color:#fff}
+.vcarga.is-error{border-color:#B8040F}
+.vcarga.is-error .vcarga__txt>span{color:#B8040F;white-space:normal}
+
+.vform__docs{display:flex;flex-direction:column;gap:10px}
+.vaviso{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--r-campo);background:var(--azul);color:#fff;font-size:14px;line-height:1.5}
+.vaviso__i{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--r-pill);background:#fff;color:var(--azul);font-weight:800}
+.vcargas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:8px}
+.vpoder{margin:0;padding:14px 16px;border-radius:var(--r-campo);background:var(--azul-suave);font-size:14px;line-height:1.5;color:var(--tinta)}
+
+
+.vform__nav{display:flex;gap:8px;align-items:center}
+.vform__atras{min-height:56px;padding:0 22px;border-radius:var(--r-pill);border:1.5px solid #D5DCE5;background:#fff;color:var(--tinta);font-family:var(--f-titulo);font-weight:800;font-size:16px;cursor:pointer}
+.vform__atras:hover{border-color:var(--azul)}
+.vform__sig{margin-left:auto;display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:0 8px 0 24px;border-radius:var(--r-pill);border:0;background:var(--azul);color:#fff;font-family:var(--f-titulo);font-weight:800;font-size:16px;cursor:pointer;transition:background .2s}
+.vform__sig:hover{background:var(--noche)}
+.vform__sig-ico{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--r-pill);background:#fff;color:var(--azul)}
+.vform__enviar{margin-left:auto;display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 24px 0 7px;border-radius:var(--r-pill);border:0;background:var(--whatsapp);color:var(--whatsapp-tinta);text-decoration:none;font-family:var(--f-titulo);font-weight:800;font-size:16px;cursor:pointer;transition:background .2s}
+.vform__enviar:hover{background:var(--whatsapp-hover);color:var(--whatsapp-tinta)}
+.vform__enviar:disabled{opacity:.6;cursor:progress}
+.vform__enviar-ico{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:var(--r-pill);background:#fff}
+.vform__enviar-ico img{width:24px;height:24px;display:block}
+
+.vlisto{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:22px;border-radius:24px;background:#fff}
+.vlisto:focus{outline:none}
+.vlisto__ico{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:var(--r-pill);background:var(--azul);color:#fff;font-weight:800;font-size:22px}
+.vlisto__titulo{font-family:var(--f-titulo);font-weight:800;font-size:22px;line-height:1.15;letter-spacing:-.02em}
+.vlisto__texto{margin:0;font-size:15px;line-height:1.55;color:var(--gris)}
+.vlisto__wa{margin-left:0}
+
+/* Vista previa «Así va tu ficha» */
+.vprev{flex:0 1 380px;min-width:min(100%,300px);position:sticky;top:100px;display:flex;flex-direction:column;gap:10px}
+.vprev__k{font-size:14px;font-weight:700;color:var(--gris);padding-left:6px}
+.vprev__tarjeta{display:flex;flex-direction:column;gap:14px;padding:10px 10px 18px;border-radius:var(--r-tarjeta);background:#fff;box-shadow:0 1px 3px rgba(11,27,46,.06),0 20px 44px rgba(11,27,46,.12)}
+.vprev__foto{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:var(--noche)}
+.vprev__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vprev__tipo{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:var(--r-pill);background:#fff;color:var(--azul);font-size:12px;font-weight:800}
+.vprev__cuerpo{display:flex;flex-direction:column;gap:10px;padding:0 10px}
+.vprev__titulo{font-family:var(--f-titulo);font-weight:800;font-size:20px;line-height:1.1;letter-spacing:-.02em}
+.vprev__lugar{font-size:14px;color:var(--gris)}
+.vprev__chips{display:flex;flex-wrap:wrap;gap:6px}
+.vprev__chips span{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:var(--r-pill);background:var(--niebla);font-size:13px;font-weight:600}
+.vprev__chips:empty{display:none}
+.vprev__precio{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:10px;border-top:1px solid var(--linea-3)}
+.vprev__precio>span:first-child{font-size:13px;color:var(--gris)}
+.vprev__precio-v{font-family:var(--f-titulo);font-weight:800;font-size:23px;letter-spacing:-.03em;color:var(--azul)}
+.vprev__pie{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:24px;background:var(--niebla)}
+.vprev__pct{font-family:var(--f-titulo);font-weight:800;font-size:20px;color:var(--azul)}
+.vprev__pie>span:last-child{font-size:14px;line-height:1.4;color:var(--gris-2)}
+/* Sin JS la vista previa no se actualiza: no se muestra. */
+html:not(.js) .vprev{display:none}
+
